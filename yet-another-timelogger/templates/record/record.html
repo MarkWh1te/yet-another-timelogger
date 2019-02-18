@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% endblock head %}
+{% block content %}
+<div class="container">
+    <h2>Record</h2>
+    <div class="row">
+        <form method="post" novalidate>
+            <p class="datepicker col s6">start date</p>
+            <p class="datepicker col s6">start time</p>
+            <input type="text" class="datepicker col s6 " id="start_date">
+            <input type="text" class="timepicker col s6 " id="start_time">
+            <p class="datepicker col s6">end date</p>
+            <p class="datepicker col s6">end time</p>
+            <input type="text" class="datepicker col s6" id="end_date">
+            <input type="text" class="timepicker col s6" id="end_time">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Login</button>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>delete</th>
+                <th>start time</th>
+                <th>end time</th>
+                <th>action</th>
+                <th>duration</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for record in queryset %}
+            <tr>
+                <td><a href="{% url 'delete_view' record.id  %}">{{ record.id }}</a></td>
+                <td>{{record.start_time}}</td>
+                <td>{{record.end_time}}</td>
+                <td>{{record.action}}</td>
+                <td>{{record.duration_time}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script src="{% static "record.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,9 @@
+.datetime_picker {
+    visibility: hidden;
+    position: absolute;
+}
+
+label {
+    visibility: hidden;
+    position: absolute;
+}
