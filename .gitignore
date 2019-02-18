@@ -253,4 +253,5 @@ venv.bak/
 # mac ds_store
 .DS_Store
 
-
+# protect secret key
+yet-another-timelogger/time_recording/settings_secret.py
